@@ -40,5 +40,5 @@ def OUE(epsilon, d, u, user):
 
         sum_value += Pvalue_j
 
-    estimated_freq = (sum_value - len(user) * q) / (p - q)
-    return estimated_freq
+    estimated_count = (sum_value - len(user) * q) / (p - q)
+    return estimated_count
