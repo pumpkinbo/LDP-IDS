@@ -5,7 +5,9 @@
 # @Software: PyCharm
 import numpy as np
 import math
-from ldp_protocol import oue
+from ldp_protocol.oue import OUE
+from ldp_protocol.grr import GRR
+from Var import Var
 
 def LBD(u, d, w, e, rounds, c, beta):
     """
@@ -72,9 +74,9 @@ def LBD(u, d, w, e, rounds, c, beta):
 
                 used_eps = 0
                 for k in range(1, w + 1):
-                    if t >= k:
+                    if t >= k - 1:
                         used_eps += e2[t - k + 1]
-                e2[t] = ((1 - beta) * e - used_eps) / 2
+                e2[t] = ((1 - beta) * e - used_eps) / 2  # potential privacy budget got mechanism 2.
 
                 var2, var_extra2 = Var(d, e2[t], N, N)
                 err = var2 + var_extra2
